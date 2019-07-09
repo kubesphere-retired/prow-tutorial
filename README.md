@@ -13,7 +13,7 @@
 6. 能够同时处理很多repo的很多pr
 7. 能够导出Prometheus指标
 
-
+Prow拥有自己的CI/CD系统，但是也能与我们常见的CI/CD一起协作，所以如果你已经习惯了Jenkins或者travis，都可以使用Prow。
 ## 安装指南
 
 > 官方repo提供了一个基于GKE快速安装指南，本文将基于青云的[QKE](https://github.com/QingCloudAppcenter/QKE])(QingCloud Kubernetes Engine)搭建Prow环境。不用担心，其中大部分步骤都是平台无关的，整个安装过程能够很方便的在其他平台上使用。
@@ -31,8 +31,10 @@
    + **必须**：`public_repo` 和 `repo:status`
    + **可选**：`repo`假如需要用于一些私有repo
    + **可选**：`admin_org:hook` 如果想要用于一个组织
-3. 将此Token保存在文件中，比如${HOME}/secrets/oauth
-4. 用`openssl rand -hex 20`生成一个随机字符串用于验证webhook。将此字符串保存在本地，比如${HOME}/secrets/h-mac
+3. 将此Token保存在文件中，比如`${HOME}/secrets/oauth`
+4. 用`openssl rand -hex 20`生成一个随机字符串用于验证webhook。将此字符串保存在本地，比如`${HOME}/secrets/h-mac`
+
+*注意最后两步创建的token一定需要保存好，除了需要上传到k8s，后续配置也要用到，用于双向验证*
 
 ### 三、 配置k8s集群
 > 这里使用的default命名空间配置prow，如果需要配置在其他命名空间，需要在相关`kubectl`的命令中配置`-n`参数，并且在部署的yaml中配置命名空间。
@@ -40,18 +42,24 @@
 1. 将上一步中创建token和hmac保存在k8s集群中
 ```bash
 # openssl rand -hex 20 > ${HOME}/secrets/h-mac
-kubectl create secret generic hmac-token --from-file=hmac=
+kubectl create secret generic hmac-token --from-file=hmac=${HOME}/secrets/h-mac
 kubectl create secret generic oauth-token --from-file=oauth=${HOME}/secrets/oauth
 ```
-2. 部署Prow。由于Prow官方yaml中使用了grc.io镜像，这个镜像在中国大陆无法访问，所以我们将相应的repo搬到了dockerhub上，并提供了一份替换相关镜像名称的[yaml](prow.yaml)
+2. 部署Prow。由于Prow官方yaml中使用了grc.io镜像，这个镜像在中国大陆无法访问，所以我们将相应的repo搬到了dockerhub上，并提供了一份替换相关镜像名称的[yaml](prow.yaml)，利用下面的命令即可部署Prow
+```bash
+kubectl apply -f https://raw.githubusercontent.com/magicsong/prow-tutorial/master/prow.yaml
+```
+3. 使用`kubectl get pod`看到所有Pod都running表示安装已经完成。如下图：
 
+![pods](pods.png)
 
+4. 配置外网访问
+**恭喜你！你已经拥有了一个prow集群，这个集群已经准备工作了，下一步就是要做一些配置工作，以使得Prow能按照我们的意图工作。**
 
+## 配置指南
+> Prow配置较为复杂，这里只演示一些简单的基本的配置。
+
+1. 安装[bazel](https://docs.bazel.build/versions/master/install.html)。Bazel是google公司用来构建k8s代码的一个工具，同样prow也是用bazel构建的。后续的配置都是用bazel动态生成的工具来配置的（类似于`go run  ./pkg/tool -a -b`）。如果你身处非大陆地区，也可以不用Bazel，直接时候用`go get`来获取静态binay执行命令。
+2. 安装完成之后需要将整个仓库<https://github.com/kubernetes/test-infra> 整个仓库clone下来，用于Bazel运行命令的仓库。
+3. 
 [1]: https://github.com/settings/tokens
-[2]: /prow/jobs.md#How-to-configure-new-jobs
-[3]: https://github.com/jetstack/cert-manager
-[4]: https://kubernetes.io/docs/concepts/services-networking/ingress/#tls
-[5]: /prow/cmd/mkbuild-cluster/
-[6]: /prow/cmd/tide/README.md
-[7]: /prow/cmd/tide/config.md
-[8]: https://github.com/kubernetes/test-infra/blob/master/prow/scaling.md#working-around-githubs-limited-acls
