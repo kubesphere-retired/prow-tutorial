@@ -42,14 +42,16 @@ Prow拥有自己的CI/CD系统，但是也能与我们常见的CI/CD一起协作
 
 ### 三、 配置k8s集群
 > 这里使用的default命名空间配置prow，如果需要配置在其他命名空间，需要在相关`kubectl`的命令中配置`-n`参数，并且在部署的yaml中配置命名空间。
-> 
+> 建议将[本repo](https://github.com/magicsong/prow-tutorial)克隆到本地，这个repo带有很多帮助配置Prow的小工具。
+
+
 1. 将上一步中创建token和hmac保存在k8s集群中
 ```bash
 # openssl rand -hex 20 > ${HOME}/secrets/h-mac
 kubectl create secret generic hmac-token --from-file=hmac=${HOME}/secrets/h-mac
 kubectl create secret generic oauth-token --from-file=oauth=${HOME}/secrets/oauth
 ```
-2. 部署Prow。由于Prow官方yaml中使用了grc.io镜像，这个镜像在中国大陆无法访问，所以我们将相应的repo搬到了dockerhub上，并提供了一份替换相关镜像名称的[yaml](prow.yaml)，利用下面的命令即可部署Prow
+2. 部署Prow。由于Prow官方yaml中使用了grc.io镜像，这个镜像在中国大陆无法访问，所以我们将相应的repo搬到了dockerhub上，并提供了一份替换相关镜像名称的[yaml](prow.yaml)，利用下面的命令即可部署Prow（使用的这个repo修改后的yaml）
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/magicsong/prow-tutorial/master/prow.yaml
 ```
@@ -58,6 +60,13 @@ kubectl apply -f https://raw.githubusercontent.com/magicsong/prow-tutorial/maste
 ![pods](pods.png)
 
 4. 配置外网访问
+
++  如果使用的QKE，那么集群默认带有[`LoadBalancer Controller`](https://github.com/yunify/qingcloud-cloud-controller-manager)。如果只是一个单独集群，那么只需要按照<https://github.com/yunify/qingcloud-cloud-controller-manager)>中的安装即可，安装非常方便。
++  Prow官方采用的是ingress配置外网访问，所以我们需要配置`ingress-controller`。QKE默认带有一个`ingress-controller`，在`kubesphere-control-system`中。如果集群中还没有`ingress-controller`，需要安装一个。[官方文档](https://kubernetes.github.io/ingress-nginx/deploy/)中还没有青云的配置指南，需要安装下面的指令安装`ingress-controller`：
+    ```bash
+    kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/mandatory.yaml
+    kubectl apply -f 
+    ```
 **恭喜你！你已经拥有了一个prow集群，这个集群已经准备工作了，下一步就是要做一些配置工作，以使得Prow能按照我们的意图工作。**
 
 ## 配置指南

@@ -437,11 +437,13 @@ kind: Ingress
 metadata:
   namespace: default
   name: ing
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
   rules:
   - http:
       paths:
-      - path: /* # Correct for GKE, need / on many other distros
+      - path: / # Correct for GKE, need / on many other distros
         backend:
           serviceName: deck
           servicePort: 80

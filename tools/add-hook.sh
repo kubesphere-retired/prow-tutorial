@@ -7,8 +7,9 @@ fi
 
 add-hook \
   --hmac-path=/Users/songxuetao/temp/hmac-token \
-  --github-token-path=/Users/songxuetao/temp/git-token \
-  --hook-url http://prow.magicsong.xyz:32439/hook \
+  --github-token-path=/Users/songxuetao/temp/test-token \
+  --hook-url http://139.198.121.161:8180/hook \
   --repo $repo \
-  --confirm=true%
+  --confirm=true
+  
   
