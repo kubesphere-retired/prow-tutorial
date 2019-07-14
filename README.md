@@ -16,11 +16,15 @@
 Prow拥有自己的CI/CD系统，但是也能与我们常见的CI/CD一起协作，所以如果你已经习惯了Jenkins或者travis，都可以使用Prow。
 ## 安装指南
 
-> 官方repo提供了一个基于GKE快速安装指南，本文将基于青云的[QKE](https://github.com/QingCloudAppcenter/QKE])(QingCloud Kubernetes Engine)搭建Prow环境。不用担心，其中大部分步骤都是平台无关的，整个安装过程能够很方便的在其他平台上使用。
+> 官方repo提供了一个基于GKE快速安装指南，本文将基于青云的Iaas搭建Prow环境。不用担心，其中大部分步骤都是平台无关的，整个安装过程能够很方便的在其他平台上使用。
 
 ### 一、 准备一个kubernetes集群
 
-在青云控制台上点击左侧的容器平台，选择其中的QKE，简单设置一些参数之后，就可以很快创建一个kubernetes集群。
+有以下多种方式准备一个集群
+
+1. 利用kubeadm自建集群
+2. 在青云控制台上点击左侧的容器平台，选择其中的QKE，简单设置一些参数之后，就可以很快创建一个kubernetes集群。
+3. 将集群的kubeconfig复制到本地，请确保在本地运行`kubectl cluster-info`正确无误
 
 ### 二、 准备一个github机器人账号
 > 如果没有机器人账号，用个人账号也可以。机器人账号便于区分哪些Prow的行为，所以正式使用时应该用机器人账号。
@@ -57,9 +61,16 @@ kubectl apply -f https://raw.githubusercontent.com/magicsong/prow-tutorial/maste
 **恭喜你！你已经拥有了一个prow集群，这个集群已经准备工作了，下一步就是要做一些配置工作，以使得Prow能按照我们的意图工作。**
 
 ## 配置指南
-> Prow配置较为复杂，这里只演示一些简单的基本的配置。
+> Prow配置较为复杂，这里只演示最小配置，能让我们的Pr机器人工作起来
 
 1. 安装[bazel](https://docs.bazel.build/versions/master/install.html)。Bazel是google公司用来构建k8s代码的一个工具，同样prow也是用bazel构建的。后续的配置都是用bazel动态生成的工具来配置的（类似于`go run  ./pkg/tool -a -b`）。如果你身处非大陆地区，也可以不用Bazel，直接时候用`go get`来获取静态binay执行命令。
-2. 安装完成之后需要将整个仓库<https://github.com/kubernetes/test-infra> 整个仓库clone下来，用于Bazel运行命令的仓库。
+2. 安装完成之后需要将整个仓库<https://github.com/kubernetes/test-infra> 整个仓库clone下来，用于Bazel运行命令的仓库。clone完成之后cd 进入这个repo的根目录
 3. 
+
+
+```bash
+kubectl create configmap plugins \
+  --from-file=plugins.yaml=${PWD}/samples/plugins.yaml --dry-run -o yaml \
+  | kubectl replace configmap plugins -f -
+```
 [1]: https://github.com/settings/tokens

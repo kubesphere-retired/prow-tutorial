@@ -116,7 +116,7 @@ spec:
     type: string
     JSONPath: .status.state
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: default
@@ -130,6 +130,9 @@ spec:
     rollingUpdate:
       maxSurge: 1
       maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: hook
   template:
     metadata:
       labels:
@@ -139,8 +142,7 @@ spec:
       terminationGracePeriodSeconds: 180
       containers:
       - name: hook
-        image: magicsong/hook:v20190703-1f4d61631
-        imagePullPolicy: Always
+        image: magicsong/hook:v20190711-664ef040d
         args:
         - --dry-run=false
         - --config-path=/etc/config/config.yaml
@@ -160,19 +162,19 @@ spec:
         - name: plugins
           mountPath: /etc/plugins
           readOnly: true
-        livenessProbe:
-          httpGet:
-            path: /healthz
-            port: 8081
-          initialDelaySeconds: 3
-          periodSeconds: 3
-        readinessProbe:
-          httpGet:
-            path: /healthz/ready
-            port: 8081
-          initialDelaySeconds: 10
-          periodSeconds: 3
-          timeoutSeconds: 600
+        # livenessProbe:
+        #   httpGet:
+        #     path: /healthz
+        #     port: 8081
+        #   initialDelaySeconds: 3
+        #   periodSeconds: 3
+        # readinessProbe:
+        #   httpGet:
+        #     path: /healthz/ready
+        #     port: 8081
+        #   initialDelaySeconds: 10
+        #   periodSeconds: 3
+        #   timeoutSeconds: 600
       volumes:
       - name: hmac
         secret:
@@ -218,7 +220,7 @@ spec:
       serviceAccountName: "plank"
       containers:
       - name: plank
-        image: magicsong/plank:v20190703-1f4d61631
+        image: magicsong/plank:v20190711-664ef040d
         args:
         - --dry-run=false
         - --config-path=/etc/config/config.yaml
@@ -237,7 +239,7 @@ spec:
         configMap:
           name: config
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: default
@@ -245,6 +247,9 @@ metadata:
   labels:
     app: sinker
 spec:
+  selector:
+    matchLabels:
+      app: sinker
   replicas: 1
   template:
     metadata:
@@ -254,7 +259,7 @@ spec:
       serviceAccountName: "sinker"
       containers:
       - name: sinker
-        image: magicsong/sinker:v20190703-1f4d61631
+        image: magicsong/sinker:v20190711-664ef040d
         args:
         - --config-path=/etc/config/config.yaml
         volumeMounts:
@@ -266,7 +271,7 @@ spec:
         configMap:
           name: config
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: default
@@ -280,6 +285,9 @@ spec:
     rollingUpdate:
       maxSurge: 1
       maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: deck
   template:
     metadata:
       labels:
@@ -289,7 +297,7 @@ spec:
       terminationGracePeriodSeconds: 30
       containers:
       - name: deck
-        image: magicsong/deck:v20190703-1f4d61631
+        image: magicsong/deck:v20190711-664ef040d
         args:
         - --config-path=/etc/config/config.yaml
         - --tide-url=http://tide/
@@ -332,7 +340,7 @@ spec:
     targetPort: 8080
   type: NodePort
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: default
@@ -343,6 +351,9 @@ spec:
   replicas: 1 # Do not scale up.
   strategy:
     type: Recreate
+  selector:
+    matchLabels:
+      app: horologium
   template:
     metadata:
       labels:
@@ -352,7 +363,7 @@ spec:
       terminationGracePeriodSeconds: 30
       containers:
       - name: horologium
-        image: magicsong/horologium:v20190703-1f4d61631
+        image: magicsong/horologium:v20190711-664ef040d
         args:
         - --config-path=/etc/config/config.yaml
         volumeMounts:
@@ -364,7 +375,7 @@ spec:
         configMap:
           name: config
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: default
@@ -375,6 +386,9 @@ spec:
   replicas: 1 # Do not scale up.
   strategy:
     type: Recreate
+  selector:
+    matchLabels:
+      app: tide
   template:
     metadata:
       labels:
@@ -383,7 +397,7 @@ spec:
       serviceAccountName: "tide"
       containers:
       - name: tide
-        image: magicsong/tide:v20190703-1f4d61631
+        image: magicsong/tide:v20190711-664ef040d
         args:
         - --dry-run=false
         - --config-path=/etc/config/config.yaml
@@ -436,7 +450,7 @@ spec:
           serviceName: hook
           servicePort: 8888
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: statusreconciler
@@ -445,6 +459,9 @@ metadata:
     app: statusreconciler
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: statusreconciler
   template:
     metadata:
       labels:
@@ -454,7 +471,7 @@ spec:
       terminationGracePeriodSeconds: 180
       containers:
       - name: statusreconciler
-        image: magicsong/status-reconciler:v20190703-1f4d61631
+        image: magicsong/status-reconciler:v20190711-664ef040d
         args:
         - --dry-run=false
         - --continue-on-error=true

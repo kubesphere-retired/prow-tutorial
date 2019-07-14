@@ -1,7 +1,7 @@
 #!/bin/bash
 
 gfw_hub="gcr.io/k8s-prow"
-tag="v20190703-1f4d61631"
+tag="v20190711-664ef040d"
 repos=('hook' 'plank' 'deck' 'tide' 'sinker' 'status-reconciler' 'horologium')
 
 for image in ${repos[@]};do
