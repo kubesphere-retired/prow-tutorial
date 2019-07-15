@@ -1,3 +1,9 @@
 plugins:
   github.com/magicsong/prow-tutorial:
   - size
+  - cat 
+  - dog
+  - pony 
+  - yuks 
+  - help 
+  - label 
