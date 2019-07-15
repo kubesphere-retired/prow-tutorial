@@ -1,9 +1,12 @@
 plugins:
-  github.com/magicsong/prow-tutorial:
+  kubesphere-test/prow-tutorial:
   - size
   - cat 
   - dog
   - pony 
   - yuks 
   - help 
-  - label 
+  - label
+  - trigger
+  - approve
+  - lgtm 

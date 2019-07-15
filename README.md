@@ -107,11 +107,19 @@ bazel run //experiment/add-hook -- \
 ### 配置集群使用的插件
 > Prow是以插件机制运行的，类似CoreDNS那种，没有插件就什么都不做，但是依然能正常运行。我们需要配置我们的repo需要哪些插件
 
-1. 官方提供了不少插件，在上面的Prow页面中就能看到一些，现在演示如何使用`size`插件。首先创建一个`plugins.yaml`的文件，如下：
+1. 官方提供了不少插件，在上面的Prow页面中就能看到一些，现在演示如何使用内置的一些插件。首先创建一个`plugins.yaml`的文件，如下：
 ```yaml
 plugins:
-  github.com/magicsong/prow-tutorial:
+  github.com/kubesphere-test/prow-tutorial:
   - size
+  - cat 
+  - dog
+  - pony 
+  - yuks 
+  - label
+  - trigger
+  - approve
+  - lgtm 
 ```
 2. 创建一个空白的`config.yaml`，这个文件将会在后续配置任务中使用，插件配置部分留空即可。
 3. 如果安装了bazel，那么进入`test-infra`这个目录，执行下面的命令(记得替换其中的相关文件的路径)，这个命令会检查`config.yaml`和`plugins.yaml`的配置是否正确：
@@ -125,4 +133,63 @@ kubectl create configmap plugins \
   | kubectl replace configmap plugins -f -
 ```
 5. 这样`size`插件就完成了。可以提一个Pr，效果应该如下图：
+
+![plugins](images/plugins_prow.png)
+
+6. 上述演示中还安装了很多好玩的插件，可以参考prow页面中帮助页面，学习如何使用这些命令。
+
+### 配置Tide机器人
+> tide机器人最主要的功能就是自动合并Pr，当设定的目标达成时，tide机器人就会自动将代码Merge进主分支。Tide的完整的配置较为复杂，这里演示一个基本的配置，无需修改很多就能运行。
+
+1. 在上述config.yaml中加入下列字段(请修改相应的repo)：
+```yaml
+tide:
+  merge_method:
+    kubesphere-test/prow-tutorial: squash
+
+  target_url: https://prow.k8s.io/tide.html
+
+  queries:
+  - repos:
+    - kubesphere-test/prow-tutorial
+    labels:
+    - lgtm
+    - approved
+    missingLabels:
+    - do-not-merge
+    - do-not-merge/hold
+    - do-not-merge/work-in-progress
+    - needs-ok-to-test
+    - needs-rebase
+
+  context_options:
+    # Use branch protection options to define required and optional contexts
+    from-branch-protection: true
+    # Treat unknown contexts as optional
+    skip-unknown-contexts: true
+    orgs:
+      org:
+        required-contexts:
+        - "check-required-for-all-repos"
+        repos:
+          repo:
+            required-contexts:
+             - "check-required-for-all-branches"
+            branches:
+              branch:
+                from-branch-protection: false
+                required-contexts:
+                - "required_test"
+                optional-contexts:
+                - "optional_test"
+```
+2. 执行下面的命令将config.yaml推送到k8s集群中(替换相应的config.yaml文件位置)：
+```bash
+kubectl create configmap config --from-file=config.yaml=${PWD}/samples/config.yaml --dry-run -o yaml | kubectl replace configmap config -f -
+```
+3. 去刚才的pr上看，应该可以看到下面的check：
+![tide](images/tide.png)
+
+4. 由于这是我提的Pr，所以自动会带上`approved`标签，现在只要添加一个`lgtm`的标签就可以。需要找代码Review的人看过代码，然后让他们输入`/lgtm`的评论即可，Prow会自动打上`lgtm`的标签。（由于这次演示没有其他人打/lgtm，并且自己无法给自己评论`/lgtm`,所以本次演示需要手动给这个pr在lables中选择lgtm的标签）。效果如下图：
+
 [1]: https://github.com/settings/tokens
