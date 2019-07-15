@@ -141,13 +141,13 @@ kubectl create configmap plugins \
 ### 配置Tide机器人
 > tide机器人最主要的功能就是自动合并Pr，当设定的目标达成时，tide机器人就会自动将代码Merge进主分支。Tide的完整的配置较为复杂，这里演示一个基本的配置，无需修改很多就能运行。
 
-1. 在上述config.yaml中加入下列字段(请修改相应的repo)：
+1. 在上述config.yaml中加入下列字段(请修改相应的repo和相应的tide页面)：
 ```yaml
 tide:
   merge_method:
     kubesphere-test/prow-tutorial: squash
 
-  target_url: https://prow.k8s.io/tide.html
+  target_url: http://139.198.121.161:8080/tide
 
   queries:
   - repos:
@@ -191,5 +191,11 @@ kubectl create configmap config --from-file=config.yaml=${PWD}/samples/config.ya
 ![tide](images/tide.png)
 
 4. 由于这是我提的Pr，所以自动会带上`approved`标签，现在只要添加一个`lgtm`的标签就可以。需要找代码Review的人看过代码，然后让他们输入`/lgtm`的评论即可，Prow会自动打上`lgtm`的标签。（由于这次演示没有其他人打/lgtm，并且自己无法给自己评论`/lgtm`,所以本次演示需要手动给这个pr在lables中选择lgtm的标签）。效果如下图：
+![lgtm](images/lgtm.png)
+
+## 高级配置
+
+Prow是一个高效的CI/CD系统，也是一个复杂的系统，本文无法阐述所有的高级配置，更深入的配置可以参考官方文档。本Repo整理了一些常用的脚本，方便后续使用Prow的时候进行配置。使用这些脚本时，请注意替换一些数据
+
 
 [1]: https://github.com/settings/tokens
