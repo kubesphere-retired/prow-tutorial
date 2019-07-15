@@ -1,5 +1,5 @@
 # Prow使用指南
-![prow_logo](logo_horizontal_solid.png)
+![prow_logo](images/logo_horizontal_solid.png)
 
 ## 简介
 
@@ -57,29 +57,72 @@ kubectl apply -f https://raw.githubusercontent.com/magicsong/prow-tutorial/maste
 ```
 3. 使用`kubectl get pod`看到所有Pod都running表示安装已经完成。如下图：
 
-![pods](pods.png)
+![pods](images/pods.png)
 
 4. 配置外网访问
 
 +  如果使用的QKE，那么集群默认带有[`LoadBalancer Controller`](https://github.com/yunify/qingcloud-cloud-controller-manager)。如果只是一个单独集群，那么只需要按照<https://github.com/yunify/qingcloud-cloud-controller-manager)>中的安装即可，安装非常方便。
 +  Prow官方采用的是ingress配置外网访问，所以我们需要配置`ingress-controller`。QKE默认带有一个`ingress-controller`，在`kubesphere-control-system`中。如果集群中还没有`ingress-controller`，需要安装一个。[官方文档](https://kubernetes.github.io/ingress-nginx/deploy/)中还没有青云的配置指南，需要安装下面的指令安装`ingress-controller`：
-    ```bash
-    kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/mandatory.yaml
-    kubectl apply -f 
-    ```
+  ```bash
+  kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/mandatory.yaml
+  kubectl apply -f https://raw.githubusercontent.com/magicsong/prow-tutorial/master/manifest/ingress-service.yaml #这个命令QKE需要执行
+  ```
+  执行上述两条命令之后，敲`kubectl get svc -n ingress-nginx`，等待获取公网IP即可，如下图（如果需要手动指定公网IP，参考LB的[配置文档](https://github.com/yunify/qingcloud-cloud-controller-manager/blob/master/docs/configure.md)配置`ingress-nginx`这个service）：
+    ![ingress](images/ingress_ok.png)
+
+  **注意**如果使用的QKE，需要执行上面两个命令中的第二个命令。第二个命令对应的yaml就是[ingrsss](manifest/ingress-service.yaml)，在apply之前需要将其中的namespace修改为`kubesphere-control-system`。
+
+5. 访问Prow地址，默认应该为刚才的ingress的公网ip+端口8080，应该能在页面中看到一个`Echo Test`的任务。访问效果如下：
+
+![echo-test](images/echo_test.png)
+
 **恭喜你！你已经拥有了一个prow集群，这个集群已经准备工作了，下一步就是要做一些配置工作，以使得Prow能按照我们的意图工作。**
 
 ## 配置指南
 > Prow配置较为复杂，这里只演示最小配置，能让我们的Pr机器人工作起来
 
+### 工具准备
 1. 安装[bazel](https://docs.bazel.build/versions/master/install.html)。Bazel是google公司用来构建k8s代码的一个工具，同样prow也是用bazel构建的。后续的配置都是用bazel动态生成的工具来配置的（类似于`go run  ./pkg/tool -a -b`）。如果你身处非大陆地区，也可以不用Bazel，直接时候用`go get`来获取静态binay执行命令。
-2. 安装完成之后需要将整个仓库<https://github.com/kubernetes/test-infra> 整个仓库clone下来，用于Bazel运行命令的仓库。clone完成之后cd 进入这个repo的根目录
-3. 
+2. 如果要使用`bazel`，安装完成之后需要将整个仓库<https://github.com/kubernetes/test-infra> 整个仓库clone下来，用于Bazel运行命令的仓库。clone完成之后cd 进入这个repo的根目录
+
+### 配置webhook
+> Prow是基于webhook工作的，github上的活动会发送给处理
 
 
+1. 选择一个github仓库配置webhook。执行下面的命令添加一个repo，需要替换掉其中的`hmac-path`和`github-token-path`，hook的地址是上面的prow地址加一个”/hook“：
+```bash
+# Ideally use https://bazel.build, alternatively try:
+#   go get -u k8s.io/test-infra/experiment/add-hook && add-hook
+bazel run //experiment/add-hook -- \
+  --hmac-path=/path/to/hook/secret \
+  --github-token-path=/path/to/oauth/secret \
+  --hook-url http://an.ip.addr.ess/hook \
+  --repo my-org/my-repo \
+  --repo my-whole-org \
+  --confirm=false  # Remove =false to actually add hook
+```
+2. 如果运行没问题，那么需要将最后一行改为`--confirm=true`。运行成功后，在repo的webhooks配置中，应该能看到一个新的webhook：
+![webhook](images/Webhooks.png)
+
+### 配置集群使用的插件
+> Prow是以插件机制运行的，类似CoreDNS那种，没有插件就什么都不做，但是依然能正常运行。我们需要配置我们的repo需要哪些插件
+
+1. 官方提供了不少插件，在上面的Prow页面中就能看到一些，现在演示如何使用`size`插件。首先创建一个`plugins.yaml`的文件，如下：
+```yaml
+plugins:
+  github.com/magicsong/prow-tutorial:
+  - size
+```
+2. 创建一个空白的`config.yaml`，这个文件将会在后续配置任务中使用，插件配置部分留空即可。
+3. 如果安装了bazel，那么进入`test-infra`这个目录，执行下面的命令(记得替换其中的相关文件的路径)，这个命令会检查`config.yaml`和`plugins.yaml`的配置是否正确：
+```bash
+bazel run //prow/cmd/checkconfig -- --plugin-config=path/to/plugins.yaml --config-path=path/to/config.yaml
+```
+4. 检查无误之后就可以将plugins.yaml上传到集群中（替换其中的路径）：
 ```bash
 kubectl create configmap plugins \
   --from-file=plugins.yaml=${PWD}/samples/plugins.yaml --dry-run -o yaml \
   | kubectl replace configmap plugins -f -
 ```
+5. 这样`size`插件就完成了。可以提一个Pr，效果应该如下图：
 [1]: https://github.com/settings/tokens
