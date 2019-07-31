@@ -148,7 +148,6 @@ tide:
     kubesphere-test/prow-tutorial: squash
 
   target_url: http://139.198.121.161:8080/tide
-
   queries:
   - repos:
     - kubesphere-test/prow-tutorial
@@ -191,6 +190,7 @@ kubectl create configmap config --from-file=config.yaml=${PWD}/samples/config.ya
 ![tide](images/tide.png)
 
 4. 由于这是我提的Pr，所以自动会带上`approved`标签，现在只要添加一个`lgtm`的标签就可以。需要找代码Review的人看过代码，然后让他们输入`/lgtm`的评论即可，Prow会自动打上`lgtm`的标签。（由于这次演示没有其他人打/lgtm，并且自己无法给自己评论`/lgtm`,所以本次演示需要手动给这个pr在lables中选择lgtm的标签）。效果如下图：
+
 ![lgtm](images/lgtm.png)
 
 ## 高级配置
@@ -198,4 +198,6 @@ kubectl create configmap config --from-file=config.yaml=${PWD}/samples/config.ya
 Prow是一个高效的CI/CD系统，也是一个复杂的系统，本文无法阐述所有的高级配置，更深入的配置可以参考官方文档。本Repo整理了一些常用的脚本，方便后续使用Prow的时候进行配置。使用这些脚本时，请注意替换一些数据。
 更多的请参考：
 1. [OWNERS](owner.md)
+
+
 [1]: https://github.com/settings/tokens
