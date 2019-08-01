@@ -195,6 +195,10 @@ kubectl create configmap config --from-file=config.yaml=${PWD}/samples/config.ya
 
 ## 高级配置
 
-Prow是一个高效的CI/CD系统，也是一个复杂的系统，本文无法阐述所有的高级配置，更深入的配置可以参考官方文档。本Repo整理了一些常用的脚本，方便后续使用Prow的时候进行配置。使用这些脚本时，请注意替换一些数据
+Prow是一个高效的CI/CD系统，也是一个复杂的系统，本文无法阐述所有的高级配置，更深入的配置可以参考官方文档。本Repo整理了一些常用的脚本，方便后续使用Prow的时候进行配置。使用这些脚本时，请注意替换一些数据。
+更多的请参考：
+1. [OWNERS](owner.md)
+2. [Job](jobs.md)
+
 
 [1]: https://github.com/settings/tokens
