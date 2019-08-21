@@ -1,0 +1,51 @@
+plugins:
+  QingCloudAppcenter/QKE:
+  - assign
+  - size
+  - lgtm
+  - approve
+  - label
+  - trigger
+  - hold
+  - verify-owners
+  - wip
+  timestamp-nginx/nginx-project:
+  - assign
+  - size
+  - lgtm
+  - approve
+  - label
+  - trigger
+  - hold
+  - verify-owners
+  - wip
+  yunify/qingcloud-csi:
+  - assign
+  - size
+  - lgtm
+  - approve
+  - label
+  - trigger
+  - hold
+  - verify-owners
+  - wip
+  yunify/qingstor-csi:
+  - assign
+  - size
+  - lgtm
+  - approve
+  - label
+  - trigger
+  - hold
+  - verify-owners
+  - wip
+  kubesphere-test/prow-tutorial:
+  - assign
+  - size
+  - lgtm
+  - approve
+  - label
+  - trigger
+  - hold
+  - verify-owners
+  - wip
