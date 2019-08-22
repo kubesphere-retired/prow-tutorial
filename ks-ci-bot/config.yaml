@@ -1,0 +1,39 @@
+tide:
+  target_url: http://139.198.120.205:8080/tide
+  queries:
+  - repos:
+    - timestamp-nginx/nginx-project
+    - yunify/qingcloud-csi
+    - yunify/qingstor-csi
+    - QingCloudAppcenter/QKE
+    - kubesphere-test/prow-tutorial
+    labels:
+    - lgtm
+    - approved
+    missingLabels:
+    - do-not-merge
+    - do-not-merge/hold
+    - do-not-merge/work-in-progress
+    - needs-ok-to-test
+    - needs-rebase
+
+  context_options:
+    # Use branch protection options to define required and optional contexts
+    from-branch-protection: true
+    # Treat unknown contexts as optional
+    skip-unknown-contexts: true
+    orgs:
+      org:
+        required-contexts:
+        - "check-required-for-all-repos"
+        repos:
+          repo:
+            required-contexts:
+             - "check-required-for-all-branches"
+            branches:
+              branch:
+                from-branch-protection: false
+                required-contexts:
+                - "required_test"
+                optional-contexts:
+                - "optional_test"
