@@ -1,9 +1,10 @@
 approvers:
-- magicsong #oncall
-- wnxn
-- zryfish
+ - magicsong #oncall
+ - wnxn
+ - zryfish
 
 reviewers:
-- magicsong #oncall
-- wnxn
-- zryfish
+ - magicsong #oncall
+ - wnxn
+ - zryfish
+ 
