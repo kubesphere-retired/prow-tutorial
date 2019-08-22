@@ -49,3 +49,65 @@ plugins:
   - hold
   - verify-owners
   - wip
+  kubesphere/s2ioperator:
+  - assign
+  - size
+  - lgtm
+  - approve
+  - label
+  - trigger
+  - hold
+  - verify-owners
+  - wip
+  kubesphere/porter:
+  - assign
+  - size
+  - lgtm
+  - approve
+  - label
+  - trigger
+  - hold
+  - verify-owners
+  - wip
+  yunify/qingcloud-cloud-controller-manager:
+  - assign
+  - size
+  - lgtm
+  - approve
+  - label
+  - trigger
+  - hold
+  - wip
+  yunify/hostnic-cni:
+  - assign
+  - size
+  - lgtm
+  - approve
+  - label
+  - trigger
+  - hold
+  - verify-owners
+  - wip
+  kubesphere/kubesphere:
+  - size
+  - lgtm
+  - approve
+  - label
+  - trigger
+  - hold
+  - verify-owners
+  - wip
+  - milestone
+  - welcome
+  - heart
+  - help
+  - assign
+  kubesphere/s2irun:
+  - assign
+  - size
+  - lgtm
+  - approve
+  - label
+  - trigger
+  - hold
+  - wip

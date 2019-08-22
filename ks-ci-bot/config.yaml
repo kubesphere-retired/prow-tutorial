@@ -1,4 +1,26 @@
+postsubmits:
+  kubesphere/s2ioperator:
+  - name: test-postsubmit
+    spec:
+      containers:
+      - image: alpine
+        command: ["/bin/printenv"]
+presubmits:
+  kubesphere/s2ioperator:
+  - name: test-presubmit
+    always_run: true
+    skip_report: false
+    spec:
+      containers:
+      - image: alpine
+        command: ["/bin/printenv"]
 tide:
+  merge_method:
+    kubesphere/s2ioperator: squash
+    kubesphere/porter: squash
+    kubesphere/s2irun: squash
+    yunify/qingcloud-cloud-controller-manager: squash
+    yunify/hostnic-cni: squash
   target_url: http://139.198.120.205:8080/tide
   queries:
   - repos:
@@ -7,6 +29,12 @@ tide:
     - yunify/qingstor-csi
     - QingCloudAppcenter/QKE
     - kubesphere-test/prow-tutorial
+    - kubesphere/s2ioperator
+    - kubesphere/porter
+    - yunify/qingcloud-cloud-controller-manager
+    - yunify/hostnic-cni
+    - kubesphere/kubesphere
+    - kubesphere/s2irun
     labels:
     - lgtm
     - approved
