@@ -26,6 +26,12 @@ default:
       prowPlugin: help
       addedBy: anyone
     - color: e11d21
+      description: Categorizes issue or PR as related to adding, removing, or otherwise changing an API
+      name: kind/api-change
+      target: both
+      prowPlugin: label
+      addedBy: anyone
+    - color: e11d21
       description: Categorizes issue or PR as related to a bug.
       name: kind/bug
       target: both
@@ -46,6 +52,27 @@ default:
     - color: c7def8
       description: Categorizes issue or PR as related to documentation.
       name: kind/documentation
+      target: both
+      prowPlugin: label
+      addedBy: anyone
+    - color: e11d21
+      description: Categorizes issue or PR as related to a consistently or frequently failing test.
+      name: kind/failing-test
+      target: both
+      prowPlugin: label
+      addedBy: anyone
+    - color: c7def8
+      description: Categorizes issue or PR as related to a new feature.
+      name: kind/feature
+      previously:
+        - name: enhancement
+        - name: kind/enhancement
+      target: both
+      prowPlugin: label
+      addedBy: anyone
+    - color: f7c6c7
+      description: Categorizes issue or PR as related to a flaky test.
+      name: kind/flake
       target: both
       prowPlugin: label
       addedBy: anyone

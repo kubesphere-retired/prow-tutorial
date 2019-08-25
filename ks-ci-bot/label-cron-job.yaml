@@ -18,7 +18,7 @@ spec:
               args:
               - --config=/etc/config/labels.yaml
               - --confirm=true
-              - --only=yunify/qingcloud-csi,yunify/qingstor-csi,QingCloudAppcenter/QKE,kubesphere-test/prow-tutorial
+              - --only=yunify/qingcloud-csi,yunify/qingstor-csi,QingCloudAppcenter/QKE,kubesphere-test/prow-tutorial,kubesphere/s2ioperator,kubesphere/porter,yunify/qingcloud-cloud-controller-manager,yunify/hostnic-cni,kubesphere/kubesphere,kubesphere/s2irun
               - --token=/etc/github/oauth
               volumeMounts:
               - name: oauth
