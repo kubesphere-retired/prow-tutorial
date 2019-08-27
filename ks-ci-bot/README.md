@@ -28,7 +28,7 @@ kubectl create configmap label-config \
 ### 2 Github 仓库 setting -> webhooks 处增加 webhook
 可以通过命令行新增 webhook，也可以在 Github 手动配置 webhook
 
-#### 2.1 Payload URL: http://139.198.120.205:8080/webhook
+#### 2.1 Payload URL: http://prow.kubesphere.io:8080/webhook
 
 #### 2.2. Content type: application/json
 
@@ -46,5 +46,5 @@ cp $GOPATH/bin/add-hook /usr/local/bin
 ```
 
 ```
-add-hook  --hmac-path=h-mac --github-token-path=oauth -hook-url http://139.198.120.205:8080/hook -repo kubesphere-test/prow-tutorial -confirm=true
+add-hook  --hmac-path=h-mac --github-token-path=oauth -hook-url http://prow.kubesphere.io:8080/hook -repo kubesphere-test/prow-tutorial -confirm=true
 ```
