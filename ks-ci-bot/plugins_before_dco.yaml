@@ -9,7 +9,6 @@ plugins:
   - hold
   - verify-owners
   - wip
-  - dco
   timestamp-nginx/nginx-project:
   - assign
   - size
@@ -20,7 +19,6 @@ plugins:
   - hold
   - verify-owners
   - wip
-  - dco
   yunify/qingcloud-csi:
   - assign
   - size
@@ -31,7 +29,6 @@ plugins:
   - hold
   - verify-owners
   - wip
-  - dco
   yunify/qingstor-csi:
   - assign
   - size
@@ -42,7 +39,6 @@ plugins:
   - hold
   - verify-owners
   - wip
-  - dco
   kubesphere-test/prow-tutorial:
   - assign
   - size
@@ -63,7 +59,6 @@ plugins:
   - pony
   - shrug
   - yuks
-  - dco
   kubesphere/s2ioperator:
   - assign
   - size
@@ -74,7 +69,6 @@ plugins:
   - hold
   - verify-owners
   - wip
-  - dco
   kubesphere/porter:
   - assign
   - size
@@ -86,7 +80,6 @@ plugins:
   - verify-owners
   - wip
   - branchcleaner
-  - dco
   yunify/qingcloud-cloud-controller-manager:
   - assign
   - size
@@ -97,7 +90,6 @@ plugins:
   - hold
   - wip
   - branchcleaner
-  - dco
   yunify/hostnic-cni:
   - assign
   - size
@@ -109,7 +101,6 @@ plugins:
   - verify-owners
   - wip
   - branchcleaner
-  - dco
   kubesphere/kubesphere:
   - size
   - lgtm
@@ -125,7 +116,6 @@ plugins:
   - help
   - assign
   - lifecycle
-  - dco
   kubesphere/console:
   - size
   - lgtm
@@ -141,7 +131,6 @@ plugins:
   - help
   - assign
   - lifecycle
-  - dco
   kubesphere/s2irun:
   - assign
   - size
@@ -151,7 +140,6 @@ plugins:
   - trigger
   - hold
   - wip
-  - dco
   kubesphere/community:
   - size
   - lgtm
@@ -167,7 +155,6 @@ plugins:
   - help
   - assign
   - lifecycle
-  - dco
   kubesphere/kubekey:
   - size
   - lgtm
@@ -183,7 +170,6 @@ plugins:
   - help
   - assign
   - lifecycle
-  - dco
   kubesphere/helm-charts:
   - size
   - lgtm
@@ -199,7 +185,6 @@ plugins:
   - help
   - assign
   - lifecycle
-  - dco
   kubesphere/devops-agent:
   - size
   - lgtm
@@ -215,7 +200,6 @@ plugins:
   - help
   - assign
   - lifecycle
-  - dco
 
 repo_milestone:
   '':

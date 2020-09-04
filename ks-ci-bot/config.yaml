@@ -21,6 +21,7 @@ tide:
     kubesphere/s2irun: squash
     yunify/qingcloud-cloud-controller-manager: squash
     yunify/hostnic-cni: squash
+    QingCloudAppcenter/QKE: squash
   target_url: http://prow.kubesphere.io:8080/tide
   queries:
   - repos:
@@ -35,6 +36,11 @@ tide:
     - yunify/hostnic-cni
     - kubesphere/kubesphere
     - kubesphere/s2irun
+    - kubesphere/console
+    - kubesphere/community
+    - kubesphere/kubekey
+    - kubesphere/helm-charts
+    - kubesphere/devops-agent
     labels:
     - lgtm
     - approved
