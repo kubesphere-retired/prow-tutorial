@@ -1,4 +1,14 @@
 plugins:
+  kubesphere/website:
+  - assign
+  - size
+  - lgtm
+  - approve
+  - label
+  - trigger
+  - hold
+  - verify-owners
+  - wip
   QingCloudAppcenter/QKE:
   - assign
   - size
