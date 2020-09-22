@@ -36,6 +36,9 @@ tide:
     - kubesphere/kubesphere
     - kubesphere/s2irun
     - kubesphere/website
+    - kubesphere/kubekey
+    - kubesphere/community
+    - kubesphere/console
     labels:
     - lgtm
     - approved

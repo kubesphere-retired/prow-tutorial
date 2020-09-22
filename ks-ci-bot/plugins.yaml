@@ -1,4 +1,34 @@
 plugins:
+  kubesphere/kubekey:
+  - assign
+  - size
+  - lgtm
+  - approve
+  - label
+  - trigger
+  - hold
+  - verify-owners
+  - wip
+  kubesphere/community:
+  - assign
+  - size
+  - lgtm
+  - approve
+  - label
+  - trigger
+  - hold
+  - verify-owners
+  - wip
+  kubesphere/console:
+  - assign
+  - size
+  - lgtm
+  - approve
+  - label
+  - trigger
+  - hold
+  - verify-owners
+  - wip 
   kubesphere/website:
   - assign
   - size
