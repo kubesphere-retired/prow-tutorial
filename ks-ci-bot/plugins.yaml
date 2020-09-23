@@ -1,15 +1,4 @@
 plugins:
-  yunify/qingcloud-csi:
-  - assign
-  - size
-  - lgtm
-  - approve
-  - label
-  - trigger
-  - hold
-  - verify-owners
-  - wip
-  - dco
   kubesphere/kubekey:
   - assign
   - size
