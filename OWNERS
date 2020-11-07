@@ -1,5 +1,7 @@
 approvers:
-    - magicsong #oncall
-
+    - zryfish
+    - shaowenchen
 reviewers:
-    - magicsong #oncall
+    - magicsong
+    - zryfish
+    - shaowenchen #oncall
