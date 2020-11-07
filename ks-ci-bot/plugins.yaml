@@ -1,4 +1,48 @@
 plugins:
+  kubesphere/devops-agent:
+  - assign
+  - size
+  - lgtm
+  - approve
+  - label
+  - trigger
+  - hold
+  - verify-owners
+  - wip
+  - dco
+  kubesphere/devops-java-sample:
+  - assign
+  - size
+  - lgtm
+  - approve
+  - label
+  - trigger
+  - hold
+  - verify-owners
+  - wip
+  - dco
+  kubesphere/ks-installer:
+  - assign
+  - size
+  - lgtm
+  - approve
+  - label
+  - trigger
+  - hold
+  - verify-owners
+  - wip
+  - dco
+  kubesphere/kubekey:
+  - assign
+  - size
+  - lgtm
+  - approve
+  - label
+  - trigger
+  - hold
+  - verify-owners
+  - wip
+  - dco
   kubesphere/kubekey:
   - assign
   - size
@@ -87,7 +131,7 @@ plugins:
   - verify-owners
   - wip
   - dco
-  kubesphere-test/prow-tutorial:
+  kubesphere/prow-tutorial:
   - assign
   - size
   - lgtm

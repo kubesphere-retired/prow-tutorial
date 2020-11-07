@@ -28,7 +28,7 @@ tide:
     - yunify/qingcloud-csi
     - yunify/qingstor-csi
     - QingCloudAppcenter/QKE
-    - kubesphere-test/prow-tutorial
+    - kubesphere/prow-tutorial
     - kubesphere/s2ioperator
     - kubesphere/porter
     - yunify/qingcloud-cloud-controller-manager
@@ -39,6 +39,9 @@ tide:
     - kubesphere/kubekey
     - kubesphere/community
     - kubesphere/console
+    - kubesphere/ks-installer
+    - kubesphere/devops-agent
+    - kubesphere/devops-java-sample
     labels:
     - lgtm
     - approved
