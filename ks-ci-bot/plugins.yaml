@@ -1,4 +1,48 @@
 plugins:
+  kubesphere/kubekey:
+  - assign
+  - size
+  - lgtm
+  - approve
+  - label
+  - trigger
+  - hold
+  - verify-owners
+  - wip
+  - dco
+  kubesphere/community:
+  - assign
+  - size
+  - lgtm
+  - approve
+  - label
+  - trigger
+  - hold
+  - verify-owners
+  - wip
+  - dco
+  kubesphere/console:
+  - assign
+  - size
+  - lgtm
+  - approve
+  - label
+  - trigger
+  - hold
+  - verify-owners
+  - wip
+  - dco 
+  kubesphere/website:
+  - assign
+  - size
+  - lgtm
+  - approve
+  - label
+  - trigger
+  - hold
+  - verify-owners
+  - wip
+  - dco
   QingCloudAppcenter/QKE:
   - assign
   - size
@@ -9,6 +53,7 @@ plugins:
   - hold
   - verify-owners
   - wip
+  - dco
   timestamp-nginx/nginx-project:
   - assign
   - size
@@ -19,6 +64,7 @@ plugins:
   - hold
   - verify-owners
   - wip
+  - dco
   yunify/qingcloud-csi:
   - assign
   - size
@@ -29,6 +75,7 @@ plugins:
   - hold
   - verify-owners
   - wip
+  - dco
   yunify/qingstor-csi:
   - assign
   - size
@@ -39,6 +86,7 @@ plugins:
   - hold
   - verify-owners
   - wip
+  - dco
   kubesphere-test/prow-tutorial:
   - assign
   - size
@@ -49,6 +97,7 @@ plugins:
   - hold
   - verify-owners
   - wip
+  - dco
   kubesphere/s2ioperator:
   - assign
   - size
@@ -59,6 +108,7 @@ plugins:
   - hold
   - verify-owners
   - wip
+  - dco
   kubesphere/porter:
   - assign
   - size
@@ -69,6 +119,7 @@ plugins:
   - hold
   - verify-owners
   - wip
+  - dco
   yunify/qingcloud-cloud-controller-manager:
   - assign
   - size
@@ -78,6 +129,7 @@ plugins:
   - trigger
   - hold
   - wip
+  - dco
   yunify/hostnic-cni:
   - assign
   - size
@@ -88,6 +140,7 @@ plugins:
   - hold
   - verify-owners
   - wip
+  - dco
   kubesphere/kubesphere:
   - size
   - lgtm
@@ -102,6 +155,7 @@ plugins:
   - heart
   - help
   - assign
+  - dco
   kubesphere/s2irun:
   - assign
   - size
@@ -111,3 +165,4 @@ plugins:
   - trigger
   - hold
   - wip
+  - dco
