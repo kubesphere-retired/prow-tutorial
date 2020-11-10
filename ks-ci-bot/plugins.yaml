@@ -10,6 +10,7 @@ plugins:
   - verify-owners
   - wip
   - dco
+  - lifecycle
   kubesphere/devops-java-sample:
   - assign
   - size
@@ -21,6 +22,7 @@ plugins:
   - verify-owners
   - wip
   - dco
+  - lifecycle
   kubesphere/ks-installer:
   - assign
   - size
@@ -32,6 +34,7 @@ plugins:
   - verify-owners
   - wip
   - dco
+  - lifecycle
   kubesphere/kubekey:
   - assign
   - size
@@ -43,17 +46,7 @@ plugins:
   - verify-owners
   - wip
   - dco
-  kubesphere/kubekey:
-  - assign
-  - size
-  - lgtm
-  - approve
-  - label
-  - trigger
-  - hold
-  - verify-owners
-  - wip
-  - dco
+  - lifecycle
   kubesphere/community:
   - assign
   - size
@@ -65,6 +58,7 @@ plugins:
   - verify-owners
   - wip
   - dco
+  - lifecycle
   kubesphere/console:
   - assign
   - size
@@ -75,7 +69,8 @@ plugins:
   - hold
   - verify-owners
   - wip
-  - dco 
+  - dco
+  - lifecycle
   kubesphere/website:
   - assign
   - size
@@ -87,6 +82,7 @@ plugins:
   - verify-owners
   - wip
   - dco
+  - lifecycle
   QingCloudAppcenter/QKE:
   - assign
   - size
@@ -98,6 +94,7 @@ plugins:
   - verify-owners
   - wip
   - dco
+  - lifecycle
   timestamp-nginx/nginx-project:
   - assign
   - size
@@ -109,6 +106,7 @@ plugins:
   - verify-owners
   - wip
   - dco
+  - lifecycle
   yunify/qingcloud-csi:
   - assign
   - size
@@ -131,6 +129,7 @@ plugins:
   - verify-owners
   - wip
   - dco
+  - lifecycle
   kubesphere/prow-tutorial:
   - assign
   - size
@@ -142,6 +141,7 @@ plugins:
   - verify-owners
   - wip
   - dco
+  - lifecycle
   kubesphere/s2ioperator:
   - assign
   - size
@@ -153,6 +153,7 @@ plugins:
   - verify-owners
   - wip
   - dco
+  - lifecycle
   kubesphere/porter:
   - assign
   - size
@@ -164,6 +165,7 @@ plugins:
   - verify-owners
   - wip
   - dco
+  - lifecycle
   yunify/qingcloud-cloud-controller-manager:
   - assign
   - size
@@ -174,6 +176,7 @@ plugins:
   - hold
   - wip
   - dco
+  - lifecycle
   yunify/hostnic-cni:
   - assign
   - size
@@ -185,6 +188,7 @@ plugins:
   - verify-owners
   - wip
   - dco
+  - lifecycle
   kubesphere/kubesphere:
   - size
   - lgtm
@@ -198,6 +202,7 @@ plugins:
   - welcome
   - heart
   - help
+  - lifecycle
   - assign
   - dco
   kubesphere/s2irun:
@@ -210,3 +215,4 @@ plugins:
   - hold
   - wip
   - dco
+  - lifecycle
