@@ -51,9 +51,9 @@ Prow拥有自己的CI/CD系统，但是也能与我们常见的CI/CD一起协作
 kubectl create secret generic hmac-token --from-file=hmac=${HOME}/secrets/h-mac
 kubectl create secret generic oauth-token --from-file=oauth=${HOME}/secrets/oauth
 ```
-2. 部署Prow。由于Prow官方yaml中使用了grc.io镜像，这个镜像在中国大陆无法访问，所以我们将相应的repo搬到了dockerhub上，并提供了一份替换相关镜像名称的[yaml](prow.yaml)，利用下面的命令即可部署Prow（使用的这个repo修改后的yaml）
+2. 部署Prow。由于Prow官方yaml中使用了grc.io镜像，这个镜像在中国大陆无法访问，所以我们将相应的repo搬到了dockerhub上，并提供了一份替换相关镜像名称的[yaml](manifest/prow.yaml)，利用下面的命令即可部署Prow（使用的这个repo修改后的yaml）
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/magicsong/prow-tutorial/master/prow.yaml
+kubectl apply -f https://raw.githubusercontent.com/magicsong/prow-tutorial/master/manifest/prow.yaml
 ```
 3. 使用`kubectl get pod`看到所有Pod都running表示安装已经完成。如下图：
 
