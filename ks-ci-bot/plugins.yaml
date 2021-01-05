@@ -59,6 +59,7 @@ plugins:
   - wip
   - dco
   - lifecycle
+  - milestone
   kubesphere/console:
   - assign
   - size
@@ -153,6 +154,8 @@ plugins:
   - verify-owners
   - wip
   - dco
+  - milestone
+  - milestonestatus
   - lifecycle
   kubesphere/porter:
   - assign
@@ -199,6 +202,7 @@ plugins:
   - verify-owners
   - wip
   - milestone
+  - milestonestatus
   - welcome
   - heart
   - help
@@ -216,3 +220,8 @@ plugins:
   - wip
   - dco
   - lifecycle
+repo_milestone:
+  # Default maintainer
+  '':
+    maintainers_id: 3229997
+    maintainers_team: developers
