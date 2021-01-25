@@ -11,6 +11,8 @@ plugins:
   - wip
   - dco
   - lifecycle
+  - project
+  - project-manager
   kubesphere/devops-java-sample:
   - assign
   - size
@@ -23,6 +25,8 @@ plugins:
   - wip
   - dco
   - lifecycle
+  - project
+  - project-manager
   kubesphere/ks-installer:
   - assign
   - size
@@ -35,6 +39,8 @@ plugins:
   - wip
   - dco
   - lifecycle
+  - project
+  - project-manager
   kubesphere/kubekey:
   - assign
   - size
@@ -47,6 +53,8 @@ plugins:
   - wip
   - dco
   - lifecycle
+  - project
+  - project-manager
   kubesphere/community:
   - assign
   - size
@@ -60,6 +68,8 @@ plugins:
   - dco
   - lifecycle
   - milestone
+  - project
+  - project-manager
   kubesphere/console:
   - assign
   - size
@@ -72,7 +82,22 @@ plugins:
   - wip
   - dco
   - lifecycle
+  - project
+  - project-manager
   kubesphere/website:
+  - assign
+  - size
+  - lgtm
+  - approve
+  - label
+  - trigger
+  - hold
+  - verify-owners
+  - wip
+  - lifecycle
+  - project
+  - project-manager
+  kubesphere/kubeye:
   - assign
   - size
   - lgtm
@@ -84,6 +109,8 @@ plugins:
   - wip
   - dco
   - lifecycle
+  - project
+  - project-manager
   QingCloudAppcenter/QKE:
   - assign
   - size
@@ -157,6 +184,8 @@ plugins:
   - milestone
   - milestonestatus
   - lifecycle
+  - project
+  - project-manager
   kubesphere/porter:
   - assign
   - size
@@ -209,6 +238,8 @@ plugins:
   - lifecycle
   - assign
   - dco
+  - project
+  - project-manager
   kubesphere/s2irun:
   - assign
   - size
@@ -220,8 +251,73 @@ plugins:
   - wip
   - dco
   - lifecycle
+  - project
+  - project-manager
 repo_milestone:
   # Default maintainer
   '':
     maintainers_id: 3229997
     maintainers_team: developers
+project_config:
+  project_org_configs:
+    kubesphere:
+      org_maintainers_team_id: 3229997
+      project_repo_configs:
+        kubesphere:
+          repo_maintainers_team_id: 3229997
+          repo_default_column_map:
+            devops: "To do"
+        s2ioperator:
+          repo_maintainers_team_id: 3229997
+          repo_default_column_map:
+            devops: "To do"
+        devops-agent:
+          repo_maintainers_team_id: 3229997
+          repo_default_column_map:
+            devops: "To do"
+        ks-jenkins:
+          repo_maintainers_team_id: 3229997
+          repo_default_column_map:
+            devops: "To do"
+project_manager:
+  orgsRepos:
+    "kubesphere/kubesphere":
+      projects:
+        "devops":
+          columns:
+            - id: 2
+              labels:
+                - "area/devops"
+              name: 'devops'
+              org: 'kubesphere'
+              state: 'open'
+    "kubesphere/devops-agent":
+      projects:
+        "devops":
+          columns:
+            - id: 2
+              labels:
+                - "area/devops"
+              name: 'devops'
+              org: 'kubesphere'
+              state: 'open'
+    "kubesphere/s2ioperator":
+      projects:
+        "devops":
+          columns:
+            - id: 2
+              labels:
+                - "area/devops"
+              name: 'devops'
+              org: 'kubesphere'
+              state: 'open'
+    "kubesphere/ks-jenkins":
+      projects:
+        "devops":
+          columns:
+            - id: 2
+              labels:
+                - "area/devops"
+              name: 'devops'
+              org: 'kubesphere'
+              state: 'open'
