@@ -279,6 +279,10 @@ project_config:
           repo_maintainers_team_id: 3229997
           repo_default_column_map:
             devops: "To do"
+        console:
+          repo_maintainers_team_id: 3229997
+          repo_default_column_map:
+            devops: "To do"
 project_manager:
   orgsRepos:
     "kubesphere/kubesphere":
@@ -312,6 +316,16 @@ project_manager:
               org: 'kubesphere'
               state: 'open'
     "kubesphere/ks-jenkins":
+      projects:
+        "devops":
+          columns:
+            - id: 2
+              labels:
+                - "area/devops"
+              name: 'devops'
+              org: 'kubesphere'
+              state: 'open'
+    "kubesphere/console":
       projects:
         "devops":
           columns:
