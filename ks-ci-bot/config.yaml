@@ -41,6 +41,7 @@ tide:
     - kubesphere/community
     - kubesphere/console
     - kubesphere/ks-installer
+    - kubesphere/ks-jenkins
     - kubesphere/devops-agent
     - kubesphere/devops-java-sample
     - kubesphere/kubeye

@@ -263,6 +263,20 @@ plugins:
   - project
   - project-manager
   - help
+  kubesphere/ks-jenkins:
+  - assign
+  - size
+  - lgtm
+  - approve
+  - label
+  - trigger
+  - hold
+  - wip
+  - dco
+  - lifecycle
+  - project
+  - project-manager
+  - help
 repo_milestone:
   # Default maintainer
   '':
