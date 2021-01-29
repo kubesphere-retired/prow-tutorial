@@ -13,6 +13,7 @@ plugins:
   - lifecycle
   - project
   - project-manager
+  - help
   kubesphere/devops-java-sample:
   - assign
   - size
@@ -27,6 +28,7 @@ plugins:
   - lifecycle
   - project
   - project-manager
+  - help
   kubesphere/ks-installer:
   - assign
   - size
@@ -41,6 +43,7 @@ plugins:
   - lifecycle
   - project
   - project-manager
+  - help
   kubesphere/kubekey:
   - assign
   - size
@@ -55,6 +58,7 @@ plugins:
   - lifecycle
   - project
   - project-manager
+  - help
   kubesphere/community:
   - assign
   - size
@@ -70,6 +74,7 @@ plugins:
   - milestone
   - project
   - project-manager
+  - help
   kubesphere/console:
   - assign
   - size
@@ -84,6 +89,7 @@ plugins:
   - lifecycle
   - project
   - project-manager
+  - help
   kubesphere/website:
   - assign
   - size
@@ -97,6 +103,7 @@ plugins:
   - lifecycle
   - project
   - project-manager
+  - help
   kubesphere/kubeye:
   - assign
   - size
@@ -111,6 +118,7 @@ plugins:
   - lifecycle
   - project
   - project-manager
+  - help
   QingCloudAppcenter/QKE:
   - assign
   - size
@@ -186,6 +194,7 @@ plugins:
   - lifecycle
   - project
   - project-manager
+  - help
   kubesphere/porter:
   - assign
   - size
@@ -253,6 +262,7 @@ plugins:
   - lifecycle
   - project
   - project-manager
+  - help
 repo_milestone:
   # Default maintainer
   '':
