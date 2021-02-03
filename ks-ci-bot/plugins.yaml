@@ -104,7 +104,7 @@ plugins:
   - project
   - project-manager
   - help
-  kubesphere/kubeye:
+  kubesphere/kubeeye:
   - assign
   - size
   - lgtm
