@@ -178,6 +178,7 @@ plugins:
   - wip
   - dco
   - lifecycle
+  - config-updater
   kubesphere/s2ioperator:
   - assign
   - size
@@ -282,6 +283,12 @@ repo_milestone:
   '':
     maintainers_id: 3229997
     maintainers_team: developers
+config_updater:
+  gzip: false
+  maps:
+    ks-ci-bot/plugins.yaml:
+      name: plugins
+      namespace: prow
 project_config:
   project_org_configs:
     kubesphere:
