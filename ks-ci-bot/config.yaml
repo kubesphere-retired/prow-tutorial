@@ -44,7 +44,7 @@ tide:
     - kubesphere/ks-jenkins
     - kubesphere/devops-agent
     - kubesphere/devops-java-sample
-    - kubesphere/kubeye
+    - kubesphere/kubeeye
     labels:
     - lgtm
     - approved
