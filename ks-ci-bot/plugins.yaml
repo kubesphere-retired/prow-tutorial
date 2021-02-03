@@ -289,6 +289,12 @@ config_updater:
     ks-ci-bot/plugins.yaml:
       name: plugins
       namespace: prow
+    ks-ci-bot/labels.yaml:
+      name: label-config
+      namespace: prow
+    ks-ci-bot/config.yaml:
+      name: config
+      namespace: prow
 project_config:
   project_org_configs:
     kubesphere:
