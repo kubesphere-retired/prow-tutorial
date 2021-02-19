@@ -14,6 +14,7 @@ plugins:
   - project
   - project-manager
   - help
+  - retitle
   kubesphere/devops-java-sample:
   - assign
   - size
@@ -29,6 +30,7 @@ plugins:
   - project
   - project-manager
   - help
+  - retitle
   kubesphere/ks-installer:
   - assign
   - size
@@ -44,6 +46,7 @@ plugins:
   - project
   - project-manager
   - help
+  - retitle
   kubesphere/kubekey:
   - assign
   - size
@@ -59,6 +62,7 @@ plugins:
   - project
   - project-manager
   - help
+  - retitle
   kubesphere/community:
   - assign
   - size
@@ -75,6 +79,7 @@ plugins:
   - project
   - project-manager
   - help
+  - retitle
   kubesphere/console:
   - assign
   - size
@@ -90,6 +95,7 @@ plugins:
   - project
   - project-manager
   - help
+  - retitle
   kubesphere/website:
   - assign
   - size
@@ -104,6 +110,7 @@ plugins:
   - project
   - project-manager
   - help
+  - retitle
   kubesphere/kubeeye:
   - assign
   - size
@@ -119,6 +126,7 @@ plugins:
   - project
   - project-manager
   - help
+  - retitle
   QingCloudAppcenter/QKE:
   - assign
   - size
@@ -179,6 +187,7 @@ plugins:
   - dco
   - lifecycle
   - config-updater
+  - retitle
   kubesphere/s2ioperator:
   - assign
   - size
@@ -196,6 +205,7 @@ plugins:
   - project
   - project-manager
   - help
+  - retitle
   kubesphere/porter:
   - assign
   - size
@@ -208,6 +218,7 @@ plugins:
   - wip
   - dco
   - lifecycle
+  - retitle
   yunify/qingcloud-cloud-controller-manager:
   - assign
   - size
@@ -250,6 +261,7 @@ plugins:
   - dco
   - project
   - project-manager
+  - retitle
   kubesphere/s2irun:
   - assign
   - size
@@ -264,6 +276,7 @@ plugins:
   - project
   - project-manager
   - help
+  - retitle
   kubesphere/ks-jenkins:
   - assign
   - size
@@ -278,6 +291,7 @@ plugins:
   - project
   - project-manager
   - help
+  - retitle
 repo_milestone:
   # Default maintainer
   '':
