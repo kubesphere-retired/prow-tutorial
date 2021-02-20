@@ -20,6 +20,9 @@ tide:
     kubesphere/s2ioperator: squash
     kubesphere/porter: squash
     kubesphere/s2irun: squash
+    kubesphere/community: squash
+    kubesphere/ks-jenkins: squash
+    kubesphere/prow-tutorial: squash
     yunify/qingcloud-cloud-controller-manager: squash
     yunify/hostnic-cni: squash
   target_url: https://prow.kubesphere.io
