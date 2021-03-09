@@ -162,6 +162,18 @@ default:
       target: both
       prowPlugin: label
       addedBy: anyone
+    - color: fb8532
+      description: Indicates an issue is a duplicate of other open issue.
+      name: triage/duplicate
+      target: issues
+      prowPlugin: label
+      addedBy: anyone
+    - color: d15704
+      description: Indicates an issue needs more information in order to work on it.
+      name: triage/needs-information
+      target: issues
+      prowPlugin: label
+      addedBy: anyone
 repos:
   timestamp-nginx/nginx-project:
     labels:
