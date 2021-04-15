@@ -386,3 +386,13 @@ project_manager:
               name: 'devops'
               org: 'kubesphere'
               state: 'open'
+    "kubesphere/website":
+      projects:
+        "devops":
+          columns:
+            - id: 2
+              labels:
+                - "area/devops"
+              name: 'devops'
+              org: 'kubesphere'
+              state: 'open'
