@@ -175,6 +175,13 @@ default:
       prowPlugin: label
       addedBy: anyone
 repos:
+  kubesphere/kubesphere:
+    labels:
+      - color: 0050cc
+        description: metering label
+        name: area/metering
+        target: both
+        addedBy: label
   timestamp-nginx/nginx-project:
     labels:
       - color: 0052cc
