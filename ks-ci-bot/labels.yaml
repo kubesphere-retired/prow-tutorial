@@ -177,7 +177,35 @@ default:
 repos:
   kubesphere/kubesphere:
     labels:
-      - color: 0050cc
+      - color: A050cc
+        description: metering label
+        name: area/metering
+        target: both
+        addedBy: label
+  kubesphere/console:
+    labels:
+      - color: A050cc
+        description: metering label
+        name: area/metering
+        target: both
+        addedBy: label
+  kubesphere/ks-installer:
+    labels:
+      - color: A050cc
+        description: metering label
+        name: area/metering
+        target: both
+        addedBy: label
+  kubesphere/community:
+    labels:
+      - color: A050cc
+        description: metering label
+        name: area/metering
+        target: both
+        addedBy: label
+  kubesphere/website:
+    labels:
+      - color: A050cc
         description: metering label
         name: area/metering
         target: both
