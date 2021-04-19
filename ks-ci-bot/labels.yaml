@@ -162,6 +162,12 @@ default:
       target: both
       prowPlugin: label
       addedBy: anyone
+    - color: e6515e
+      description: Categorizes issue or PR as related to arm64.
+      name: area/arm64
+      target: both
+      prowPlugin: label
+      addedBy: anyone
     - color: fb8532
       description: Indicates an issue is a duplicate of other open issue.
       name: triage/duplicate
