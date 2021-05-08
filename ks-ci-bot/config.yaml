@@ -18,8 +18,7 @@ prowjob_namespace: "prow"
 tide:
   merge_method:
     kubesphere/s2ioperator: squash
-    
-    : squash
+    kubesphere/porterlb: squash
     kubesphere/s2irun: squash
     kubesphere/community: squash
     kubesphere/ks-jenkins: squash
