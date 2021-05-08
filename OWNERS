@@ -1,7 +1,8 @@
 approvers:
     - zryfish
-    - shaowenchen
+    - zheng1
+    - linuxsuren
 reviewers:
-    - magicsong
+    - zheng1 #oncall
     - zryfish
-    - shaowenchen #oncall
+    - linuxsuren
