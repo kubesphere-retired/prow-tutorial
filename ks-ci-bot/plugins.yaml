@@ -1,4 +1,21 @@
 plugins:
+  kubesphere/image-sync-config:
+  - assign
+  - size
+  - lgtm
+  - approve
+  - label
+  - trigger
+  - hold
+  - verify-owners
+  - wip
+  - dco
+  - lifecycle
+  - project
+  - project-manager
+  - help
+  - retitle
+  - stage
   kubesphere/devops-agent:
   - assign
   - size
