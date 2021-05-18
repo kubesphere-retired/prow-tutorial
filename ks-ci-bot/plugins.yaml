@@ -300,6 +300,22 @@ plugins:
   - help
   - retitle
   - stage
+  kubesphere/s2i-nodejs-container:
+  - assign
+  - size
+  - lgtm
+  - approve
+  - label
+  - trigger
+  - hold
+  - wip
+  - dco
+  - lifecycle
+  - project
+  - project-manager
+  - help
+  - retitle
+  - stage
 repo_milestone:
   # Default maintainer
   '':
@@ -355,6 +371,16 @@ project_manager:
               org: 'kubesphere'
               state: 'open'
     "kubesphere/devops-agent":
+      projects:
+        "devops":
+          columns:
+            - id: 2
+              labels:
+                - "area/devops"
+              name: 'devops'
+              org: 'kubesphere'
+              state: 'open'
+    "kubesphere/s2ioperator":
       projects:
         "devops":
           columns:
