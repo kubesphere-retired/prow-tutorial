@@ -333,6 +333,91 @@ plugins:
   - help
   - retitle
   - stage
+  kubesphere/s2i-binary-container:
+  - assign
+  - size
+  - lgtm
+  - approve
+  - label
+  - trigger
+  - hold
+  - verify-owners
+  - wip
+  - dco
+  - lifecycle
+  - project
+  - project-manager
+  - help
+  - retitle
+  - stage
+  kubesphere/s2i-java-container:
+  - assign
+  - size
+  - lgtm
+  - approve
+  - label
+  - trigger
+  - hold
+  - verify-owners
+  - wip
+  - dco
+  - lifecycle
+  - project
+  - project-manager
+  - help
+  - retitle
+  - stage
+  kubesphere/s2i-python-container:
+  - assign
+  - size
+  - lgtm
+  - approve
+  - label
+  - trigger
+  - hold
+  - verify-owners
+  - wip
+  - dco
+  - lifecycle
+  - project
+  - project-manager
+  - help
+  - retitle
+  - stage
+  kubesphere/s2i-base-container:
+  - assign
+  - size
+  - lgtm
+  - approve
+  - label
+  - trigger
+  - hold
+  - verify-owners
+  - wip
+  - dco
+  - lifecycle
+  - project
+  - project-manager
+  - help
+  - retitle
+  - stage
+  kubesphere/s2i-golang-container:
+  - assign
+  - size
+  - lgtm
+  - approve
+  - label
+  - trigger
+  - hold
+  - verify-owners
+  - wip
+  - dco
+  - lifecycle
+  - project
+  - project-manager
+  - help
+  - retitle
+  - stage
 repo_milestone:
   # Default maintainer
   '':
