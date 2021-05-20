@@ -40,6 +40,9 @@ tide:
     - kubesphere/s2irun
     - kubesphere/s2ioperator
     - kubesphere/s2i-java-container
+    - kubesphere/s2i-python-container
+    - kubesphere/s2i-base-container
+    - kubesphere/s2i-golang-container
     - kubesphere/website
     - kubesphere/kubekey
     - kubesphere/community
