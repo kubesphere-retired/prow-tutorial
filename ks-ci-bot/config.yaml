@@ -43,6 +43,7 @@ tide:
     - kubesphere/s2i-python-container
     - kubesphere/s2i-base-container
     - kubesphere/s2i-golang-container
+    - kubesphere/s2i-nodejs-container
     - kubesphere/s2i-binary-container
     - kubesphere/website
     - kubesphere/kubekey
