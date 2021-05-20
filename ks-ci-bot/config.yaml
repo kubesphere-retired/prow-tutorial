@@ -33,12 +33,16 @@ tide:
     - yunify/qingstor-csi
     - QingCloudAppcenter/QKE
     - kubesphere/prow-tutorial
-    - kubesphere/s2ioperator
     - kubesphere/porterlb
     - yunify/qingcloud-cloud-controller-manager
     - yunify/hostnic-cni
     - kubesphere/kubesphere
     - kubesphere/s2irun
+    - kubesphere/s2ioperator
+    - kubesphere/s2i-java-container
+    - kubesphere/s2i-python-container
+    - kubesphere/s2i-base-container
+    - kubesphere/s2i-golang-container
     - kubesphere/website
     - kubesphere/kubekey
     - kubesphere/community
