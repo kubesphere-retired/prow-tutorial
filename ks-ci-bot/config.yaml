@@ -5,15 +5,15 @@ postsubmits:
       containers:
       - image: alpine
         command: ["/bin/printenv"]
-presubmits:
-  kubesphere/s2ioperator:
-  - name: test-presubmit
-    always_run: true
-    skip_report: false
-    spec:
-      containers:
-      - image: alpine
-        command: ["/bin/printenv"]
+# presubmits:
+#   kubesphere/s2ioperator:
+#   - name: test-presubmit
+#     always_run: true
+#     skip_report: false
+#     spec:
+#       containers:
+#       - image: alpine
+#         command: ["/bin/printenv"]
 prowjob_namespace: "prow"
 tide:
   merge_method:
