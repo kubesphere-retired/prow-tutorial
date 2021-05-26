@@ -418,6 +418,23 @@ plugins:
   - help
   - retitle
   - stage
+  kubesphere/s2i-java-runtimeImage:
+  - assign
+  - size
+  - lgtm
+  - approve
+  - label
+  - trigger
+  - hold
+  - verify-owners
+  - wip
+  - dco
+  - lifecycle
+  - project
+  - project-manager
+  - help
+  - retitle
+  - stage
 repo_milestone:
   # Default maintainer
   '':
