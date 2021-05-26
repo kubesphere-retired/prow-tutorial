@@ -1,10 +1,10 @@
-postsubmits:
-  kubesphere/s2ioperator:
-  - name: test-postsubmit
-    spec:
-      containers:
-      - image: alpine
-        command: ["/bin/printenv"]
+# postsubmits:
+#   kubesphere/s2ioperator:
+#   - name: test-postsubmit
+#     spec:
+#       containers:
+#       - image: alpine
+#         command: ["/bin/printenv"]
 # presubmits:
 #   kubesphere/s2ioperator:
 #   - name: test-presubmit
