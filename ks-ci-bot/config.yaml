@@ -16,6 +16,10 @@
 #         command: ["/bin/printenv"]
 prowjob_namespace: "prow"
 tide:
+  blocker_label: tide/merge-blocker
+  squash_label: tide/merge-method-squash
+  rebase_label: tide/merge-method-rebase
+  merge_label: tide/merge-method-merge
   merge_method:
     kubesphere/s2ioperator: squash
     kubesphere/porterlb: squash
