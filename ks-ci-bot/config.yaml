@@ -37,7 +37,8 @@ tide:
     - yunify/qingstor-csi
     - QingCloudAppcenter/QKE
     - kubesphere/prow-tutorial
-    - kubesphere/porterlb
+    - kubesphere/openelb
+    - kubesphere/helm-charts
     - yunify/qingcloud-cloud-controller-manager
     - yunify/hostnic-cni
     - kubesphere/kubesphere
