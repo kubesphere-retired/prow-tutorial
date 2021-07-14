@@ -60,6 +60,8 @@ tide:
     - kubesphere/devops-agent
     - kubesphere/devops-java-sample
     - kubesphere/kubeeye
+    - kubesphere-sigs/ks-devops
+    - kubesphere-sigs/ks-devops-plugin
     labels:
     - lgtm
     - approved
