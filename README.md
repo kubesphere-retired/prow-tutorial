@@ -1,3 +1,5 @@
+## !!This Repo will be archived, we have transfered everything to [test-infra](https://github.com/kubesphere/test-infra).
+
 # Prow使用指南
 ![prow_logo](images/logo_horizontal_solid.png)
 
